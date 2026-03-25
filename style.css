@@ -1,0 +1,171 @@
+/* Import Google Fonts directly into CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500;700&display=swap');
+
+/* Rest of your CSS starts here... */
+/* === 1. RESET & BOX-SIZING === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* === 2. CUSTOMIZED COLOUR PALETTE === */
+:root {
+  /* Changed to a Deep Emerald and Soft Gold theme */
+  --clr-primary:  #064e3b;  /* Dark Emerald */
+  --clr-accent:   #fbbf24;  /* Warm Gold */
+  --clr-text:     #0f172a;  /* Slate Dark */
+  --clr-muted:    #475569;
+  --clr-bg:       #f8fafc;  /* Very light grey-blue */
+  --clr-white:    #ffffff;
+  --clr-border:   #e2e8f0;
+  --radius:       12px;     /* Slightly rounder corners */
+  --shadow:       0 4px 12px rgba(0,0,0,0.05);
+  --max-width:    1100px;
+}
+
+/* === 3. UPDATED TYPOGRAPHY === */
+body {
+  font-family: 'Inter', sans-serif; /* Cleaner body font */
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+}
+
+h1, h2, h3 { 
+  font-family: 'Poppins', sans-serif; /* Bold heading font */
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); }
+h2 { font-size: 2rem; margin-bottom: 1.2rem; border-left: 5px solid var(--clr-accent); padding-left: 15px; }
+
+/* === 4. HEADER & NAV === */
+header {
+  background: var(--clr-white); /* White nav for a modern "clean" look */
+  padding: 1.2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.logo {
+  font-size: 1.4rem;
+  color: var(--clr-primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+nav a {
+  color: var(--clr-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--clr-primary);
+}
+
+/* === 5. HERO SECTION === */
+.hero {
+  background: linear-gradient(135deg, var(--clr-primary), #065f46); /* Gradient background */
+  color: white;
+  padding: 8rem 1.5rem;
+  text-align: center;
+}
+
+.hero .accent { 
+  color: var(--clr-accent);
+  text-decoration: underline;
+}
+
+/* === 6. PROJECT CARDS === */
+.card {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  border: none; /* Removed border for a cleaner look */
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* Lift effect */
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.card-tag {
+  background: #fef3c7; /* Light gold background for tag */
+  color: #92400e;      /* Darker brown-gold text */
+  padding: 4px 12px;
+  font-size: 0.75rem;
+}
+
+/* === 7. TABLE CUSTOMIZATION === */
+table th {
+  background: var(--clr-primary);
+  border-radius: 5px 5px 0 0;
+}
+
+table tr:hover td {
+  background: #f1f5f9; /* Row highlight on hover */
+}
+
+/* === 8. CONTACT FORM === */
+.contact-form {
+  border-top: 5px solid var(--clr-accent); /* Added a top accent bar */
+}
+
+input:focus, textarea:focus {
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+/* === 9. FOOTER === */
+footer {
+  background: var(--clr-text);
+  color: #94a3b8;
+  padding: 3rem 1.5rem;
+}
+/* === 13. RESPONSIVE MEDIA QUERIES === */
+
+/* Tablet and above — 768px+ */
+@media (min-width: 768px) {
+  .about-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .hero { padding: 8rem 1.5rem; }
+}
+
+/* Desktop — 1024px+ */
+@media (min-width: 1024px) {
+  .cards   { grid-template-columns: repeat(3, 1fr); }
+  .hero h1 { font-size: 4rem; }
+}
+
+/* Mobile only — collapse nav to centre-aligned column */
+@media (max-width: 599px) {
+  header .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero  { padding: 3.5rem 1rem; }
+  .contact-form { padding: 1.5rem; }
+}
+
+/* Print — hide navigation and buttons */
+@media print {
+  header, footer, .btn, .hero-btns { display: none; }
+  body { font-size: 12pt; color: black; background: white; }
+}
